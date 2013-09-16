@@ -39,8 +39,9 @@ describe VotesController do
       it 'outputs valid JSON' do
         post :create, valid_params
         json = JSON.parse(response.body)
-        json['vote']['value'].should == 'true'
-        json['vote']['user_agent'].should == 'Rails Testing'
+        json['status'].should == 'voted'
+        json['voted_at'].should be_present
+        json['vote_counts'].class.should == Hash
       end
 
       it "does not respond to .html" do
@@ -49,19 +50,28 @@ describe VotesController do
         }.should raise_error(ActionController::UnknownFormat)
       end
 
-      it 'does not create a new Vote if you recently voted' do
-        existing_vote = nil
-        lambda {
-          post :create, valid_params
-          existing_vote = assigns(:vote)
-        }.should change(Vote, :count).by(1)
+      context "if you recently voted" do
+        before do
+          @existing_vote = nil
+          lambda {
+            post :create, valid_params
+            @existing_vote = assigns(:vote)
+          }.should change(Vote, :count).by(1)
+        end
 
+        it 'does not create a new Vote' do
+          lambda {
+            post :create, valid_params
+            assigns(:vote).should == @existing_vote
+            response.status.should == 202 # FIXME what's status code for partially modified
+          }.should_not change(Vote, :count)
+        end
 
-        lambda {
-          post :create, valid_params
-          assigns(:vote).should == existing_vote
-          response.status.should == 304
-        }.should_not change(Vote, :count)
+        it "changes your vote if applicable" do
+          @existing_vote.value.should == 'true'
+          post :create, valid_params.merge({value: 'false'})
+          @existing_vote.reload.value.should == 'false'
+        end
       end
     end
 
