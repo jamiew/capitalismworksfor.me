@@ -3,6 +3,7 @@ class VotesController < ApplicationController
   before_filter :get_current_vote
 
   def index
+    @vote_counts = Vote.group(:value).count
   end
 
   def create

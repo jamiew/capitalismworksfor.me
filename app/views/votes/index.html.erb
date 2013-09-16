@@ -3,12 +3,12 @@
 
   <div class="control" id="true">
     <%= link_to '&nbsp;', true_vote_path(format: 'json'), remote: true, method: 'post' %>
-    <div class="count">012</div>
+    <div class="count"><%= @vote_counts['true'] %></div>
   </div>
 
   <div class="control" id="false">
     <%= link_to '&nbsp;', false_vote_path(format: 'json'), remote: true, method: 'post' %>
-    <div class="count">005</div>
+    <div class="count"><%= @vote_counts['false'] %></div>
   </div>
 </div>
 

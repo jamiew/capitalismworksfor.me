@@ -2,6 +2,21 @@ require 'spec_helper'
 
 describe VotesController do
 
+  describe 'GET #index' do
+    it "works" do
+      get :index
+      response.should be_success
+    end
+
+    it "correctly assigns @vote_counts" do
+      Vote.delete_all
+      FactoryGirl.create(:true_vote)
+      FactoryGirl.create(:false_vote)
+      get :index
+      assigns(:vote_counts).should == { 'false' => 1, 'true' => 1 }
+    end
+  end
+
   describe 'POST #create' do
     let(:valid_params){{ value: 'true', format: 'json' }}
 
@@ -26,6 +41,12 @@ describe VotesController do
         json = JSON.parse(response.body)
         json['vote']['value'].should == 'true'
         json['vote']['user_agent'].should == 'Rails Testing'
+      end
+
+      it "does not respond to .html" do
+        lambda {
+          post :create, valid_params.merge({ format: nil })
+        }.should raise_error(ActionController::UnknownFormat)
       end
 
       it 'does not create a new Vote if you recently voted' do
