@@ -14,6 +14,12 @@
 //= require jquery_ujs
 //= require_tree .
 
+// FIXME use an asset path gif
+$(document).ready(function(){
+  var loading_gif = "<img class='loading' src='https://orders.9fold.me/images/loading-transparent.gif' />";
+  $('#true-button a').click(function(){ $('#true-score').html(loading_gif); });
+  $('#false-button a').click(function(){ $('#false-score').html(loading_gif); });
+});
 
 // $('#voting-booth')
 $(document).on('ajax:success', function(event, xhr, status) {

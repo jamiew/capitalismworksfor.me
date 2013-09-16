@@ -18,10 +18,10 @@ html, body { padding: 0; margin: 0; }
 #header { text-indent: -3000px; position: absolute; height: 0; }
 
 #sign { }
-#sign img { width: 100%; }
-
-.score { position: absolute; top: 300px; text-align: center; opacity: 0.8; background-color: #000; width: 100px; color: #fff; font-size: 32pt; font-family: courier, fixed, fixed-width; text-align: right; color: #f42;}
-.score a { }
+#sign #sign-image { width: 100%; }
+#sign .score { position: absolute; top: 300px; text-align: center; opacity: 0.8; background-color: #000; width: 100px; color: #fff; font-size: 32pt; font-family: courier, fixed, fixed-width; text-align: right; color: #f42;}
+#sign .score a { }
+#sign img.loading { width: 20px; margin-right: 5px;}
 #true-score { left: 90px; }
 #false-score { right: 90px; }
 
