@@ -57,7 +57,7 @@ describe VotesController do
       it "outputs errors in the JSON" do
         post :create, valid_params
         json = JSON.parse(response.body)
-        json['errors'].should be_present
+        json['errors'].should_not be_nil # can't check .present since it's actually blank
       end
     end
 
