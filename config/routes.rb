@@ -1,8 +1,7 @@
 Capitalism::Application.routes.draw do
 
-  # resources :votes
-  post '/votes' => 'votes#create', as: :create_vote
-  delete '/votes' => 'votes#destroy', as: :destroy_vote
+  post '/vote/true' => 'votes#create', as: :true_vote, value: 'true'
+  post '/vote/false' => 'votes#create', as: :false_vote, value: 'false'
 
   root to: 'votes#index'
 end

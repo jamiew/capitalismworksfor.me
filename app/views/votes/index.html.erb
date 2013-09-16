@@ -2,12 +2,12 @@
   <img id="sign-image" src="<%= asset_path("cap-sign-outside-785x523.jpg") %>" />
 
   <div class="control" id="true">
-    <%= link_to 'True', create_vote_path(format: 'json'), remote: true, method: 'post' %>
+    <%= link_to '&nbsp;', true_vote_path(format: 'json'), remote: true, method: 'post' %>
     <div class="count">012</div>
   </div>
 
   <div class="control" id="false">
-    <%= link_to 'False', destroy_vote_path(format: 'json'), remote: true, method: 'delete' %>
+    <%= link_to '&nbsp;', false_vote_path(format: 'json'), remote: true, method: 'post' %>
     <div class="count">005</div>
   </div>
 </div>
