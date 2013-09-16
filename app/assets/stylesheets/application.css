@@ -19,9 +19,21 @@ html, body { padding: 0; margin: 0; }
 
 #sign { }
 #sign img { width: 100%; }
-#comments { background-color: #f0f; width: 100%; text-align: center; position: absolute; top: 700px; min-height: 200px; background-color: #fff; }
 
-.control { position: absolute; top: 285px; text-align: center; opacity: 0.7; }
-.control a { padding: 15px 40px 45px; background: #fff; color: #000; text-decoration: none; border: 1px solid #000; }
-#true { left: 100px; }
-#false { right: 100px; }
+.score { position: absolute; top: 300px; text-align: center; opacity: 0.8; background-color: #000; width: 100px; color: #fff; font-size: 32pt; font-family: courier, fixed, fixed-width; text-align: right; color: #f42;}
+.score a { }
+#true-score { left: 90px; }
+#false-score { right: 90px; }
+
+#voting-booth { width: 75%; position: absolute; top: 460px; left: 100px; }
+#voting-booth img { width: 100%; border: 3px solid black; }
+#voting-booth a { position: absolute; padding: 60px; background: transparent; border: 3px solid black;}
+#voting-booth a:hover { opacity: 0.6; }
+#voting-booth #true-button a { top: 135px; left: 185px; padding: 55px 60px; }
+#voting-booth #true-button a:hover { background-color: #0f0; }
+#voting-booth #false-button a { top: 140px; right: 150px; padding: 55px 65px; }
+#voting-booth #false-button a:hover { background-color: #f00; }
+
+#comments-wrapper { margin: 0 auto; clear: both; margin-top: 350px; margin-left: 200px;  }
+#comments { min-height: 200px; background-color: #fff; }
+

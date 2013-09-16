@@ -13,3 +13,18 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+// $('#voting-booth')
+$(document).on('ajax:success', function(event, xhr, status) {
+  // $(this).append(xhr.responseText);
+  // TODO figure out if it was vote true vs. false and update counters
+  // if it was a changed vote, factor in accordingly
+  console.log("SUCCESS" + xhr.responseText)
+  console.log(xhr);
+  $('#true-score').html(xhr.vote_counts.true)
+  $('#false-score').html(xhr.vote_counts.false)
+}).on('ajax:error', function(event, xhr, status) {
+  // insert the failure message inside the "#account_settings" element
+  alert("ERROR: " + xhr.responseText);
+});

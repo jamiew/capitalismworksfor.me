@@ -1,16 +1,27 @@
 <div id="sign">
   <img id="sign-image" src="<%= asset_path("cap-sign-outside-785x523.jpg") %>" />
 
-  <div class="control" id="true">
-    <%= link_to '&nbsp;', true_vote_path(format: 'json'), remote: true, method: 'post' %>
+  <div class="score" id="true-score">
     <div class="count"><%= @vote_counts['true'] %></div>
   </div>
 
-  <div class="control" id="false">
-    <%= link_to '&nbsp;', false_vote_path(format: 'json'), remote: true, method: 'post' %>
+  <div class="score" id="false-score">
     <div class="count"><%= @vote_counts['false'] %></div>
   </div>
 </div>
+
+<div id="voting-booth">
+  <img id="voting-booth-img" src="<%= asset_path("voting-interface.jpg") %>" />
+
+  <div class="button" id="true-button">
+    <%= link_to '', true_vote_path(format: 'json'), remote: true, method: 'post' %>
+  </div>
+
+  <div class="button" id="false-button">
+    <%= link_to '', false_vote_path(format: 'json'), remote: true, method: 'post' %>
+  </div>
+</div>
+
 
 <div id="comments-wrapper">
   <!-- Facebook comments -->

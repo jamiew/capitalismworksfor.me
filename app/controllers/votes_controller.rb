@@ -35,7 +35,8 @@ protected
   end
 
   def vote_counts
-    Vote.group(:value).count
+    counts = Vote.group(:value).count
+    {'true' => 0, 'false' => 0}.merge(counts)
   end
 
   def build_vote_from_request(value)
