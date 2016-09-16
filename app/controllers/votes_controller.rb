@@ -35,7 +35,8 @@ protected
   end
 
   def vote_counts
-    counts = Vote.group(:value).count
+    start_date = Date.parse('2016-09-15')
+    counts = Vote.where('created_at > ? ', start_date).group(:value).count
     {'true' => 0, 'false' => 0}.merge(counts)
   end
 
